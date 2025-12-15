@@ -1,6 +1,7 @@
 package aplication;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,6 +31,29 @@ public class Program {
 		for(Seller sel: list) {
 			System.out.println(sel);
 		}
+		
+		System.out.println("========== teste seller FindAll = ==========");
+		System.out.println("");
+		
+		list = sellerDao.findAll();
+		for(Seller sel: list) {
+			System.out.println(sel);
+		}
+		
+		System.out.println("========== teste seller FindAll = ==========");
+		System.out.println();
+		
+		Seller newSeller = new Seller(null, "Bruno", "Bruno@mail", new Date(), 4000.0, department);
+		sellerDao.Insert(newSeller);
+		System.out.println(newSeller.getId());
+		
+		System.out.println("========== teste seller Update = ==========");
+		System.out.println();
+		
+		seller = sellerDao.FindById(1);
+		seller.setName("Ada");
+		sellerDao.Update(seller);
+		System.out.println("update complete");
 		
 	}
 }
